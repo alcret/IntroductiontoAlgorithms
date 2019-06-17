@@ -6,23 +6,21 @@ func Merge(array []int, p, q, r int) {
 	n2 := r - q
 
 	arrayL := make([]int, n1+1)
-	copy(arrayL, array[:n1])
-	arrayR := make([]int, n2+1)
-	copy(arrayR, array[n1:])
-
+	copy(arrayL, array[p:n1+p])
 	arrayL[n1] = 9999
+
+	arrayR := make([]int, n2+1)
+	copy(arrayR, array[q+1:q+n2+1])
 	arrayR[n2] = 9999
 
-	i := 0
-	j := 0
-
+	i, j := 0, 0
 	for k := p; k <= r; k++ {
 		if arrayL[i] <= arrayR[j] {
 			array[k] = arrayL[i]
-			i = i + 1
+			i++
 		} else {
 			array[k] = arrayR[j]
-			j = j + 1
+			j++
 		}
 	}
 }
