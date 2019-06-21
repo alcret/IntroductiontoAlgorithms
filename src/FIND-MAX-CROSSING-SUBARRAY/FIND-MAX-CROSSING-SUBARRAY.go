@@ -20,5 +20,6 @@ func Find_Max_Crossing_SubArray(array []int, low, mid, high int) (max_left, max_
 			max_right = i
 		}
 	}
+
 	return max_left, max_right, left_sum + right_sum
 }
